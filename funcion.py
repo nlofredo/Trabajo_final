@@ -23,9 +23,7 @@ class bcolors:
 
 ####################################################################################################################################################################################
 def crea_tabla():
-    ### Crea el archivo trabajo_final.sql con su correspondiente tabla
-    ### Habria que ver la forma de que si ya fue creada no la cree, ya que tira un error si se intenta crear nuevamente.
-    #########################################################
+
 
     # Creamos una conexión con la base de datos
     con = sqlite3.connect('trabajo_final.db')
@@ -65,7 +63,7 @@ def actualizacion():
         fecha_inicio = input(bcolors.ATENCION + "Ingrese fecha de inicio (Año-Mes-Dia): "+ bcolors.OK)
         fecha_fin = input(bcolors.ATENCION + "Ingrese fecha de fin (Año-Mes-Dia): "+ bcolors.OK)
         
-        #####
+        
 
         print(bcolors.ATENCION + "Pidiendo Datos...")
         
@@ -73,10 +71,8 @@ def actualizacion():
         
         url_datos = (f'  https://api.twelvedata.com/time_series?&start_date={fecha_inicio}1&end_date={fecha_fin}&symbol={ticker}&interval=1day&apikey=98cd6f018e164b9c8b88976dfd3e746f')
 
-
-        #### hacemos una variable global para que nos sirva por fuera de la funcion #############
         global data
-        ####
+
 
 
         response = requests.get(url_datos)
@@ -116,8 +112,7 @@ def actualizacion():
 
 
         ###### Datos guardados correctamente ############
-        #### Habria que realizar funcion para que chequee si los datos se guardaron correctamente ###############
-
+        
         print(bcolors.OK +"Datos guardados correctamente")
 
         print("")
@@ -129,7 +124,7 @@ def actualizacion():
 
 
         ###################    GUARDO INFO DESCARGADA EN DATA FRAME ###################################
-        ##### SE GUARDA EN TABLA SECUNDARIA LOS VALORES DE CADA TICKER ################################
+  
 
 
         data = r['values']
@@ -202,7 +197,7 @@ def grafico():
         
         ####### Pedimos al usuario ingresar el ticker a graficar, luego se conecta con la base de datos y se seleccionan todos
         ####### los ticker elegidos con sus fechas de inicio, fin y resultados. Todo se ordena por fecha de inicio.
-        ####### Se guardan los datos en la variable a_graficar
+   
 
         con = sqlite3.connect('trabajo_final.db')
         cursor = con.cursor()
@@ -217,8 +212,7 @@ def grafico():
         #verifica el resultado de la consulta SQL
         print(df.head())
 
-        # #cierre conexión
-        # con.close()
+
 
         df.index = pd.DatetimeIndex(df['datetime'])
 

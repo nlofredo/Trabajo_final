@@ -18,8 +18,6 @@ class bcolors:
 ##################### INICIO MENU ##################################################################
 # Para la documentación:
 # Se importa la librería OS a los fines del borrado de pantalla con la sentencia  os.system('cls').
-# Se crean 2 funciones con el Menu Principal y el Menu Secundario, dando opciones en cada uno de ellos para su elección por el usuario.
-# Dentro de cada opción, se ejecutan la funciones pertinentes.
 ########
 
 
